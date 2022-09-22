@@ -1,0 +1,13 @@
+Everything in javascript happens in excution context
+javacript is sunchronous single threaded language
+
+Execution context --> variable environment, Thread of execution
+
+Phases 1. Memory creation 2. execution
+Memory creation --> in case of variables it stores undefined and in case of function it stores the 
+entire function
+
+Execution -> the value is placed in place of undefined
+when a function is envoked a new exection contex is created 
+
+
