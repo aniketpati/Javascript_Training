@@ -3,11 +3,52 @@ javacript is sunchronous single threaded language
 
 Execution context --> variable environment, Thread of execution
 
-Phases 1. Memory creation 2. execution
+Phases 1. Memory creation 2. execution -> execution context is pushed to call stack
 Memory creation --> in case of variables it stores undefined and in case of function it stores the 
 entire function
 
 Execution -> the value is placed in place of undefined
-when a function is envoked a new exection contex is created 
+when a function is envoked a new exection contex is created for that function
+in the call stack.
+
+Hoisting -> memory is allocated before executing the program
+let and const are hoisted but present in temporal dead zone where we cant access them before
+declaration var is hoisted, function is whole hoisted and variables with var
+are hoisted as undefined. Function are completely hoisted, if need any value which is not declared
+yet, it will be declared and function is completed.
+
+Arrow function and anonmous function  are not hoisted, arrow function behave as variable
+
+Scope-> any function while try to access a variable will check for the variable in its lexical 
+scope (it go outside local environment -> global) not the reverse.
+NOTE
+var are hoisted in global scope (but let and const are hoisted but present in temporal dead zone 
+so we cant access them)
+
+let and const
+these are hoisted but attach in temporal dead zone before declaration where these cannot be accesse
+d before declaration. var is attached to global object but let and const dont attach to window object
+let and const cannot be redeclared. Declaration and assign is done in same line in case of const
+these are block scoped
+
+var a = 10;
+{
+   var a = 100;
+}
+here value of a is modified because of Shadowing a = 100
+
+let a = 10
+{
+   let a = 100;
+}
+here value of a = 10 //blockscoped 
+
+closures
+function along with the lexical scope bundel together forms closure
+
+
+
+
+
 
 

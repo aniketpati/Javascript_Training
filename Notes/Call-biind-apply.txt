@@ -1,0 +1,36 @@
+call(), apply() and  bind()
+
+RULES
+1. "this" always refers to an objects 
+2. "this" refers to an object which calls the function it contains
+3. In the global context "this" refers to either window object or is undefined if the "scrict mode" 
+is used.
+
+var car = {
+	reg: 6,
+	display: function(){
+		clg(this.reg);
+	}
+}
+var mycar = car.display; //this will not work because display function has "this" here mycar it is 
+			// pointing to global where there is no reg 
+//there after work of bind() comes 
+var mycar = car.display.bind();
+The bind() method creates a new function where “this” refers to the parameter in the parenthesis in
+the above case “car”. This way the bind() method enables calling a function with a specified “this” 
+value.
+
+we can also pass parameters
+car.mycar.bind(car, "tr")
+
+Similar but slightly different usage provide the call() and apply() methods which also belong to the
+Function.prototype property.
+
+displayDetails.apply(car, ["Vivian"]);
+
+displayDetails.call(car, "Vivian");
+
+
+Note that when using the apply() function the parameter must be placed in an array. Call() accepts b
+oth an array of parameters and a parameter itself. Both are great tools for borrowing functions in J
+avaScript.
