@@ -46,6 +46,23 @@ here value of a = 10 //blockscoped
 closures
 function along with the lexical scope bundel together forms closure
 
+example of closure
+
+function x(){
+    let a = 7;
+    function y(){
+        console.log(a);
+    }
+    return y; //not only return function but also its lexical scope varibles
+}
+
+let z = x();
+//...........
+
+z();
+
+when we are invoking y we are accessing a which is no longer is in the memory, but function memorise
+its lexical scope environment variables and we can use them, this is broadly closure 
 
 
 

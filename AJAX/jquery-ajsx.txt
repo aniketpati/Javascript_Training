@@ -1,0 +1,24 @@
+Jquery
+
+accessing a element in html using jquery
+$("#id).css("color", "red")
+
+if our script tag is above the element, we can use this 
+
+$(function(){
+
+	$("id").css("color", "red");
+
+});
+
+$("id").click(function(){
+	$(this).css(..);
+}
+//this will point to the id
+
+
+
+jquery provides lots of functions to work with ajax
+
+without reloading the page if we need to call an api or request a page we can use ajax
+
