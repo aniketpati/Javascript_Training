@@ -53,6 +53,7 @@ function x(){
     function y(){
         console.log(a);
     }
+	//if a = 100; then z() will return 100 because closure store reference to that varible	
     return y; //not only return function but also its lexical scope varibles
 }
 
@@ -62,7 +63,82 @@ let z = x();
 z();
 
 when we are invoking y we are accessing a which is no longer is in the memory, but function memorise
-its lexical scope environment variables and we can use them, this is broadly closure 
+its lexical scope environment variables and we can use them, this is broadly closure.
+
+setTimeout 
+
+function x(){
+    for(var i=1; i<=5; i++){
+        setTimeout(function(){
+            console.log(i, " ");
+        }, i*1000);
+    }
+}
+
+x();
+//output of above code is 6 6 6 6 6 because of closure, it is printing
+// the reference to i.
+
+//if we use let instead, it will be 1 2 3 4 5 because let is blocked scoped 
+//else we can  add a extra function
+
+function x(){
+    for(var i=1; i<=5; i++){
+        function close(x) {
+        setTimeout(function(){
+            console.log(x, " ");
+        }, x*1000);
+    }
+    close(i);
+    }
+}
+
+x();
+
+
+First class functions
+
+//Function statement/Function declaration --> hoisted
+function a(){
+	console.log("print")
+}
+
+//Function expression  --> not hoisted 
+
+var a = function(){
+	return 1;
+}
+
+//Anonymous function
+ dont have identity so always require to assign it, used when act like a value
+ var a = function(){
+//.........
+}
+
+//Named function expression
+
+var a = function b(){
+	//....
+}
+
+//if we call b() then it will throw error(reference error)
+
+//First class functions
+
+we can pass functions as argument and can return a function, --this ability is called as the first 
+class function 
+
+//Arrow functions
+
+
+
+
+
+
+
+
+
+
 
 
 
