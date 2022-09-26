@@ -1,0 +1,228 @@
+Everything in javascript happens in excution context
+javacript is sunchronous single threaded language
+
+Execution context --> variable environment, Thread of execution
+
+Phases 1. Memory creation 2. execution -> execution context is pushed to call stack
+Memory creation --> in case of variables it stores undefined and in case of function it stores the 
+entire function
+
+Execution -> the value is placed in place of undefined
+when a function is envoked a new exection contex is created for that function
+in the call stack.
+
+Hoisting -> memory is allocated before executing the program
+let and const are hoisted but present in temporal dead zone where we cant access them before
+declaration var is hoisted, function is whole hoisted and variables with var
+are hoisted as undefined. Function are completely hoisted, if need any value which is not declared
+yet, it will be declared and function is completed.
+
+Arrow function and anonmous function  are not hoisted, arrow function behave as variable
+
+Scope-> any function while try to access a variable will check for the variable in its lexical 
+scope (it go outside local environment -> global) not the reverse.
+NOTE
+var are hoisted in global scope (but let and const are hoisted but present in temporal dead zone 
+so we cant access them)
+
+let and const
+these are hoisted but attach in temporal dead zone before declaration where these cannot be accesse
+d before declaration. var is attached to global object but let and const dont attach to window object
+let and const cannot be redeclared. Declaration and assign is done in same line in case of const
+these are block scoped
+
+var a = 10;
+{
+   var a = 100;
+}
+here value of a is modified because of Shadowing a = 100
+
+let a = 10
+{
+   let a = 100;
+}
+here value of a = 10 //blockscoped 
+
+closures
+function along with the lexical scope bundel together forms closure
+
+example of closure
+
+function x(){
+    let a = 7;
+    function y(){
+        console.log(a);
+    }
+	//if a = 100; then z() will return 100 because closure store reference to that varible	
+    return y; //not only return function but also its lexical scope varibles
+}
+
+let z = x();
+//...........
+
+z();
+
+when we are invoking y we are accessing a which is no longer is in the memory, but function memorise
+its lexical scope environment variables and we can use them, this is broadly closure.
+
+setTimeout 
+
+function x(){
+    for(var i=1; i<=5; i++){
+        setTimeout(function(){
+            console.log(i, " ");
+        }, i*1000);
+    }
+}
+
+x();
+//output of above code is 6 6 6 6 6 because of closure, it is printing
+// the reference to i.
+
+//if we use let instead, it will be 1 2 3 4 5 because let is blocked scoped 
+//else we can  add a extra function
+
+function x(){
+    for(var i=1; i<=5; i++){
+        function close(x) {
+        setTimeout(function(){
+            console.log(x, " ");
+        }, x*1000);
+    }
+    close(i);
+    }
+}
+
+x();
+
+
+First class functions
+
+//Function statement/Function declaration --> hoisted
+function a(){
+	console.log("print")
+}
+
+//Function expression  --> not hoisted 
+
+var a = function(){
+	return 1;
+}
+
+//Anonymous function
+ dont have identity so always require to assign it, used when act like a value
+ var a = function(){
+//.........
+}
+
+//Named function expression
+
+var a = function b(){
+	//....
+}
+
+//if we call b() then it will throw error(reference error)
+
+//First class functions
+
+we can pass functions as argument and can return a function, --this ability is called as the first 
+class function 
+
+//Arrow functions
+let greet = (user) => {
+	console.log("Hello user");
+}
+
+also can be return single line let add = (num1, num2) => num1 + num2;
+no need to write return 
+
+--> callback functions
+
+function which are passed in another function are callback, this concept give us power of async in 
+sync single threaded language
+setTimeout(function(){
+    console.log("timer")
+}, 5000);
+
+function x(y){
+    console.log("This is function x");
+    y();
+}
+
+x(function y(){
+    console.log("This is function y");
+})
+
+//output
+//This is function x
+//This is function y
+//timer --> js dont stop it complete other task and till settimeout is ready
+
+ //callback with eventlistner
+
+
+function attachEventListner(){
+    let count = 0;
+    document.getElementById("click").addEventListener("click", function cllback(){
+        console.log("Button click", ++count);
+     })
+}
+attachEventListner();
+
+//we use closure for data hiding and encapsulation
+
+whenever we use eventlisner, it use memory (because of closure is attached to it) so we need garbage
+collected, for freeing up the memory
+
+Event loop
+
+event loop check if there is something in callback queue and call stack is empty then event loop push
+the callback function to stack for execution.
+This callback function is attached to web api till it expires then it is pushed to queue, event loop 
+check if call stack is empty it push the function to stack for execution
+
+web api attach callback along with its property i.e settimeout callback will be attached with a timer
+eventlistner is attached with the click or hower etc.
+
+fetch
+//fetch is function of webapi act as promise to fetch apis
+
+fetch("https://api.netflix.com")
+.then(function callBack(){
+    console.log("Succesfully fethed");
+})
+
+//if it resolve success then callback function will be executed
+
+Microtask queue has higher priority
+
+fetch callback go to microtask queue
+all callback function coming from promises will be pushed to microtask queue and mutation observer
+
+--> higher order functions 
+
+function which takes another function argument and return a function is higher order function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
