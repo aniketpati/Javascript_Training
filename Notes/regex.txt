@@ -1,0 +1,81 @@
+
+
+REGEX
+
+
+
+-------------------------------------------------------
+
+
+find data very easy, 
+ Regular expression or Regex for short is a way to search pattern in a big text of data. RegEx is al
+so used for data validation like secure password, correct email format but it's usage can be extended
+
+
+to use . we have to escape it using \. and \is used as \\
+
+. -> match any character except new line
+\d -> Digit(0-9)
+\D -> not a digit 
+\w -> word character(a-z, A-Z, 0-9, _)
+\W -> not a word character
+\s -> whitespace 
+\S -> Not a whitespace
+
+\b -> word boundary i.e ha haha \bha\b will choose first ha \bha will 2nd and ha\b will choose 3rd
+\B -> not a word boundary
+^ -> begin of a string 
+$ -> end of the string
+
+[] -> character set [-.]
+[1-7] range
+[a-zA-Z]
+[^a-z] -> not a-z (works as negation)
+
+ex mat pat cat rat
+[^r]at then it will choose all ending with at except starting with r
+
+quantifier
+----
+* -> 0 or more
++ -> 1 or more 
+? -> 0 or 1
+{3} -> exact number
+{3,5} -> range of numbers
+
+
+example
+Mr. Schafer
+Mr Smith
+Ms Davis
+Mrs. Robinson
+Mr. T
+
+
+
+Mr(r|s||rs)\.?\s[A-Z]\w* here ? is used because there might be . might not and \w* means there are many characters
+() is group | is or
+
+aniketPati@gmail.com
+aniket.pati@university.edu
+aniket-321-pati@work-my.net
+
+[a-zA-Z0-9.-]+@[a-zA-z-]+\.(com|edu|net)
+.? means there might be . might not
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

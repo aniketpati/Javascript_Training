@@ -48,6 +48,7 @@ function along with the lexical scope bundel together forms closure
 
 example of closure
 
+
 function x(){
     let a = 7;
     function y(){

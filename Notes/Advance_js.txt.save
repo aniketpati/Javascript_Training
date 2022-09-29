@@ -79,6 +79,10 @@ promise(false).then((result) => {
     console.log(error);
 });
 
+
+
+
+
 //Promise example 2 using jquery and ajax
 
 function promise(complete){
@@ -94,6 +98,7 @@ function promise(complete){
         }, 5000);
     });
 }
+
 
 promise(false).then((result) => {
     console.log(result);
